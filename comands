@@ -1,0 +1,81 @@
+yarn init -y    (criar package.json)
+
+yarn add nodemon (script "dev": "nodemon src/index.js")
+
+// es Lint
+yarn add eslint -D
+yarn eslint --init
+
+yarn add uuidv4
+
+
+docker
+
+docker -v (se trouxer a versão o docker já está pronto para uso)
+
+Baixar Imagem Postgres
+
+dokcer pull (nome da imagem - dockerhub -- hub.docker.com)
+
+docker pull postgres (tag é a versão do download)
+
+
+Listar todas as imagens
+docker image ls
+
+
+Criar container e deixar ele executando
+-e são variáveis de ambiente (Environment Variables)
+-p Porta do container (primeira do computador a segunda é a do container)
+-d Deteched -- executar em background (caso contrario vai rodar na janela e se fechar para a execução)
+e por ultimo o nome da imagem a ser executada;
+
+docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+
+
+Verificar se o container esta rodando (ver todos so containers rodando)
+docker container ls || docker ps
+
+
+Parar um container
+docker stop (name or id)
+docker stop pg || docker stop b66f5abbfba3
+
+
+Verificar cobntaineres Parados
+docker container ls -a || docker ps -a
+
+
+Iniciar um container
+docker start (name or id)
+docker start pg || docker start b66f5abbfba3
+
+
+Lista Images
+docker image ls
+
+Apagar container
+(container deve estar parado)
+docker container rm (id or name)
+
+Apagar image
+(precisa parar e deletar o container)
+docker rmi (image id || name image)
+
+
+Acessar o container rodando
+docker exec -it (interativo) pg (nome do container) bash
+
+Logar no postgres
+psql -U root (Nome do Usuário)
+
+Listar base de dados postgress
+\l
+
+Conectar a uma base de dados
+\c nomedabase
+
+Listar Tabelas
+\dt
+
+yarn add express-async-errors para tratar os erros assincronos da aplicação
